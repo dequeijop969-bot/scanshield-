@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 // Email do desenvolvedor — só ele vê o seletor de planos gratuito (modo de teste)
-const DEV_EMAIL = "dequeijop969@gmail.com";
+const DEV_EMAIL = "ttheouchiha@gmail.com";
 
 const STUDENT_CODE = "zc&t0hieSK9h/|>Z=9w1";
 const STUDENT_KEY = "scanshield_student_mode";
