@@ -2,7 +2,7 @@
 // mas SOMENTE para o email do desenvolvedor (verificado no servidor).
 import { createClient } from '@supabase/supabase-js';
 
-const DEV_EMAIL = 'ttheouchiha@gmail.com';
+const DEV_EMAIL = ['ttheouchiha@gmail.com','dequeijop969@gmail.com'];
 const VALID_PLANS = ['iniciante', 'intermediario', 'pro', null];
 
 export default async function handler(req, res) {
