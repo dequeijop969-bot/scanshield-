@@ -1,5 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/((?!api/|sitemap.xml|robots.txt|manifest.json).*)", "destination": "/index.html" }
-  ]
-}
