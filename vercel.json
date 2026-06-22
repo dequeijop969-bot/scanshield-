@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/((?!api/|sitemap.xml|robots.txt|manifest.json).*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/analyzeVideo.js": {
+      "maxDuration": 60
+    }
+  }
+}
