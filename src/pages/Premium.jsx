@@ -43,6 +43,7 @@ const plans = [
       { icon: MessageCircle, text: "8 dúvidas com o assistente ScanShield" },
       { icon: Shield, text: "Análise de golpes e fraudes" },
       { icon: ScanSearch, text: "Acesso exclusivo à análise de videos"},
+      { icon: ScanSearch, text: "5 análises de videos por mês"},
       { icon: Brain, text: "Detecção de deepfake com IA" },
     ],
   },
