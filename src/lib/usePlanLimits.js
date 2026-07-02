@@ -34,7 +34,7 @@ export function getPlanLimits(user) {
     return { analyses: Infinity, questions: Infinity, deepfake: true, video: true, plan: "estudante" };
   }
 
-  if (!user) return { analyses: 1, questions: 1, deepfake: false, video: false, linkAnalyses: 1, plan: "gratuito" };
+  if (!user) return { analyses: 3, questions: 1, deepfake: false, video: false, linkAnalyses: 3, plan: "gratuito" };
 
   if (user.is_premium) {
     const plan = (user.plan_name || "").toLowerCase();
@@ -43,7 +43,7 @@ export function getPlanLimits(user) {
     return { analyses: 5, questions: 5, deepfake: false, video: false, linkAnalyses: 3, plan: "iniciante" };
   }
 
-  return { analyses: 1, questions: 1, deepfake: false, video: false, linkAnalyses: 1, plan: "gratuito" };
+  return { analyses: 3, questions: 1, deepfake: false, video: false, linkAnalyses: 3, plan: "gratuito" };
 }
 
 export function usePlanLimits() {
