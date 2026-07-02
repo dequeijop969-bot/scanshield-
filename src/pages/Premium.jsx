@@ -11,6 +11,20 @@ const STUDENT_KEY = "scanshield_student_mode";
 
 const plans = [
   {
+    key: "Free"
+    name: "Free"
+    analyzes: 3,
+    questions:3,
+    color: "border-border"
+    badge: null,
+    features: [
+      { icon: ScanSearch, text: "3 análises por mês"},
+      { icon: Link2, text: "3 análises por mês"},
+      { icon: MessageCircle, text: "1 dúvida com o assistente ScanShield
+      { icon: Shield, text: "Análise de golpes e fraudes"
+    ],
+  },
+  {
     key: "iniciante",
     name: "Iniciante",
     price: "7,99",
