@@ -38,9 +38,9 @@ export function getPlanLimits(user) {
 
   if (user.is_premium) {
     const plan = (user.plan_name || "").toLowerCase();
-    if (plan.includes("pro")) return { analyses: 20, questions: 10, deepfake: true, video: true, linkAnalyses: 10, plan: "pro" };
-    if (plan.includes("intermediario") || plan.includes("intermediário")) return { analyses: 10, questions: 8, deepfake: true, video: true, linkAnalyses: 5, plan: "intermediario" };
-    return { analyses: 5, questions: 5, deepfake: false, video: false, linkAnalyses: 3, plan: "iniciante" };
+    if (plan.includes("pro")) return { analyses: 35, questions: 10, deepfake: true, video: true, linkAnalyses: 20, plan: "pro" };
+    if (plan.includes("intermediario") || plan.includes("intermediário")) return { analyses: 20, questions: 8, deepfake: true, video: true, linkAnalyses: 10, plan: "intermediario" };
+    return { analyses: 10, questions: 5, deepfake: false, video: false, linkAnalyses: 5, plan: "iniciante" };
   }
 
   return { analyses: 3, questions: 1, deepfake: false, video: false, linkAnalyses: 3, plan: "gratuito" };
