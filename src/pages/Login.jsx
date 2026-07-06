@@ -108,7 +108,7 @@ export default function Login() {
           className="relative flex items-center gap-3"
         >
           <div className="w-10 h-10 rounded-xl overflow-hidden ring-1 ring-border/60">
-            <img src="/logo.jpg" alt="Logotipo ScanShield" className="w-full h-full object-cover" />
+            <img src="https://media.base44.com/images/public/69b21108e661b747169bd2a0/320b791b3_WhatsAppImage2026-03-11at211121.jpg" alt="Logotipo ScanShield" className="w-full h-full object-cover" />
           </div>
           <span className="text-lg font-black tracking-tight text-foreground">ScanShield</span>
         </motion.div>
@@ -190,7 +190,7 @@ export default function Login() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="w-16 h-16 rounded-2xl overflow-hidden mx-auto mb-4 ring-1 ring-border/60 shadow-[0_0_40px_hsl(var(--foreground)/0.08)]"
             >
-              <img src="/logo.jpg" alt="Logotipo ScanShield" className="w-full h-full object-cover" />
+              <img src="https://media.base44.com/images/public/69b21108e661b747169bd2a0/320b791b3_WhatsAppImage2026-03-11at211121.jpg" alt="Logotipo ScanShield" className="w-full h-full object-cover" />
             </motion.div>
             <h1 className="text-2xl font-black tracking-tight text-foreground">ScanShield</h1>
           </div>
