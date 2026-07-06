@@ -105,7 +105,7 @@ export default function ScanDemo() {
         <div className="flex items-center justify-between px-4 py-3 border-b border-border/70 bg-background/50">
           <div className="flex items-center gap-2">
             <img
-              src="/logo.jpg"
+              src="	https://media.base44.com/images/public/69b21108e66…2a0/320b791b3_WhatsAppImage2026-03-11at211121.jpg"
               alt=""
               className="w-5 h-5 rounded object-cover"
             />
