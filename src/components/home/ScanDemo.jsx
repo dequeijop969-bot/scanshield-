@@ -106,7 +106,7 @@ export default function ScanDemo() {
           <div className="flex items-center gap-2">
             <img
               src="https://media.base44.com/images/public/69b21108e661b747169bd2a0/320b791b3_WhatsAppImage2026-03-11at211121.jpg"
-              alt=""
+              alt="https://media.base44.com/images/public/69b21108e661b747169bd2a0/320b791b3_WhatsAppImage2026-03-11at211121.jpg"
               className="w-5 h-5 rounded object-cover"
             />
             <span className="text-xs font-bold tracking-tight text-foreground">
