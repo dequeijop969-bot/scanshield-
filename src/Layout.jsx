@@ -37,7 +37,7 @@ export default function Layout() {
           <Link to={createPageUrl("Home")} className="flex items-center gap-3 flex-shrink-0 group">
             <div className="w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 bg-black ring-1 ring-border/60 transition-shadow duration-300 group-hover:ring-foreground/30">
               <img
-                src="/logo.jpg"
+                src="https://media.base44.com/images/public/69b21108e661b747169bd2a0/320b791b3_WhatsAppImage2026-03-11at211121.jpg"
                 alt="ScanShield Logo"
                 className="w-full h-full object-contain"
               />
