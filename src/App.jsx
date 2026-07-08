@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider, useAuth } from "@/lib/AuthContext";
 import { ThemeProvider } from "@/lib/ThemeContext";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Layout from "./Layout";
 import Login from "./pages/Login";
 
@@ -55,6 +56,7 @@ export default function App() {
         <AuthProvider>
           <Router>
             <AppRoutes />
+            <SpeedInsights />
           </Router>
         </AuthProvider>
       </ThemeProvider>
