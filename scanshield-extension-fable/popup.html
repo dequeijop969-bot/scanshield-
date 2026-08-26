@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>ScanShield</title>
+  <style>
+    :root {
+      --bg: hsl(0 0% 2%);
+      --card: hsl(0 0% 6%);
+      --border: hsl(0 0% 100% / 0.08);
+      --fg: hsl(0 0% 98%);
+      --muted: hsl(0 0% 60%);
+      --emerald: #34d399;
+      --yellow: #facc15;
+      --red: #f87171;
+      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      width: 320px;
+      font-family: -apple-system, "Segoe UI", Inter, sans-serif;
+      background:
+        linear-gradient(hsl(0 0% 100% / 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(0 0% 100% / 0.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: 28px 28px, 28px 28px, auto;
+      color: var(--fg);
+      padding: 0;
+      margin: 0;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 16px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: #000;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .wordmark {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .wordmark span { color: hsl(0 0% 50%); }
+    .protection {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 3px;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+    .dot {
+      position: relative;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+      flex-shrink: 0;
+    }
+    .dot::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--emerald);
+      opacity: 0.35;
+      animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping {
+      0% { transform: scale(0.6); opacity: 0.5; }
+      80%, 100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    /* ── Body ───────────────────────────────── */
+    .body { padding: 16px; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 8.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin: 0 0 8px 2px;
+    }
+
+    button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: none;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button svg { flex-shrink: 0; }
+
+    .primary {
+      background: var(--fg);
+      color: #000;
+      margin-bottom: 8px;
+      box-shadow: 0 0 24px hsl(0 0% 100% / 0.12);
+    }
+    .primary:hover { box-shadow: 0 0 32px hsl(0 0% 100% / 0.25); }
+    .primary:active { transform: scale(0.98); }
+
+    .secondary {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+    .secondary:hover { background: hsl(0 0% 100% / 0.05); border-color: hsl(0 0% 100% / 0.18); }
+    .secondary:active { transform: scale(0.98); }
+
+    .status {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-align: center;
+      min-height: 14px;
+      margin-top: 10px;
+    }
+    .status.ok { color: var(--emerald); }
+    .status.error { color: var(--red); }
+
+    /* ── Toggles ────────────────────────────── */
+    .card {
+      margin-top: 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+    }
+    .toggle-row + .toggle-row { border-top: 1px solid var(--border); }
+    .toggle-info { min-width: 0; }
+    .toggle-title {
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+    .toggle-hint {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    /* switch */
+    .switch { position: relative; flex-shrink: 0; display: inline-block; }
+    .switch input {
+      position: absolute;
+      opacity: 0;
+      inset: 0;
+      margin: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .track {
+      display: block;
+      width: 36px;
+      height: 20px;
+      border-radius: 999px;
+      background: hsl(0 0% 100% / 0.1);
+      border: 1px solid var(--border);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: hsl(0 0% 65%);
+      transition: transform 0.2s ease, background 0.2s ease;
+      pointer-events: none;
+    }
+    .switch input:checked + .track { background: hsl(160 64% 40% / 0.35); border-color: hsl(160 64% 50% / 0.4); }
+    .switch input:checked ~ .thumb { transform: translateX(16px); background: var(--emerald); }
+    .switch input:focus-visible + .track { outline: 2px solid var(--emerald); outline-offset: 2px; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    /* ── Footer ─────────────────────────────── */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 16px 14px;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: hsl(0 0% 38%);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img class="logo" src="icons/icon128.png" alt="" />
+    <div>
+      <div class="wordmark">SCAN<span>SHIELD</span></div>
+      <div class="protection"><span class="dot"></span> Proteção ativa</div>
+    </div>
+  </header>
+
+  <main class="body">
+    <p class="section-label">Verificação rápida</p>
+
+    <button class="primary" id="scanPageBtn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" />
+        <path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+        <line x1="7" y1="12" x2="17" y2="12" />
+      </svg>
+      Analisar tela atual
+    </button>
+
+    <button class="secondary" id="openSiteBtn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
+      </svg>
+      Abrir ScanShield completo
+    </button>
+
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+
+    <div class="card">
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-title">Escaneamento automático</div>
+          <div class="toggle-hint">Analisa imagens suspeitas enquanto você navega</div>
+        </div>
+        <label class="switch">
+          <span class="sr-only">Escaneamento automático</span>
+          <input type="checkbox" id="autoScanToggle" />
+          <span class="track"></span>
+          <span class="thumb"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-title">Bloqueador de anúncios</div>
+          <div class="toggle-hint">Bloqueia redes de anúncio e rastreadores</div>
+        </div>
+        <label class="switch">
+          <span class="sr-only">Bloqueador de anúncios</span>
+          <input type="checkbox" id="adBlockToggle" />
+          <span class="track"></span>
+          <span class="thumb"></span>
+        </label>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    </svg>
+    IA treinada contra golpes brasileiros
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

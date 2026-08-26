@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>ScanShield — Configurações</title>
+  <style>
+    :root {
+      --bg: hsl(0 0% 2%);
+      --card: hsl(0 0% 6%);
+      --border: hsl(0 0% 100% / 0.08);
+      --fg: hsl(0 0% 98%);
+      --muted: hsl(0 0% 60%);
+      --emerald: #34d399;
+      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, "Segoe UI", Inter, sans-serif;
+      background:
+        linear-gradient(hsl(0 0% 100% / 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(0 0% 100% / 0.025) 1px, transparent 1px),
+        var(--bg);
+      background-size: 32px 32px, 32px 32px, auto;
+      color: var(--fg);
+      margin: 0;
+      padding: 48px 24px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container { width: 100%; max-width: 520px; }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #000;
+      border: 1px solid var(--border);
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+    h1 span { color: hsl(0 0% 50%); }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin: 2px 0 0;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 12px 0 28px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin: 0 0 10px 2px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .setting {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+    }
+    .setting + .setting { border-top: 1px solid var(--border); }
+    .setting-info { min-width: 0; }
+    .setting-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 4px;
+    }
+    .setting-hint {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* switch */
+    .switch { position: relative; flex-shrink: 0; display: inline-block; margin-top: 2px; }
+    .switch input {
+      position: absolute;
+      opacity: 0;
+      inset: 0;
+      margin: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .track {
+      display: block;
+      width: 40px;
+      height: 22px;
+      border-radius: 999px;
+      background: hsl(0 0% 100% / 0.1);
+      border: 1px solid var(--border);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: hsl(0 0% 65%);
+      transition: transform 0.2s ease, background 0.2s ease;
+      pointer-events: none;
+    }
+    .switch input:checked + .track { background: hsl(160 64% 40% / 0.35); border-color: hsl(160 64% 50% / 0.4); }
+    .switch input:checked ~ .thumb { transform: translateX(18px); background: var(--emerald); }
+    .switch input:focus-visible + .track { outline: 2px solid var(--emerald); outline-offset: 2px; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: hsl(0 0% 38%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img class="logo" src="icons/icon128.png" alt="" />
+      <div>
+        <h1>SCAN<span>SHIELD</span></h1>
+        <p class="eyebrow">Configurações da extensão</p>
+      </div>
+    </header>
+
+    <p class="subtitle">
+      Controle como o ScanShield protege sua navegação. As mudanças são salvas
+      automaticamente e sincronizadas com sua conta do Chrome.
+    </p>
+
+    <p class="section-label">Proteção</p>
+    <div class="card">
+      <div class="setting">
+        <div class="setting-info">
+          <p class="setting-title">Escaneamento automático</p>
+          <p class="setting-hint">
+            Analisa imagens grandes (produtos, prints, fotos de perfil) automaticamente
+            em segundo plano enquanto você navega. Pode consumir mais dados e créditos de análise.
+          </p>
+        </div>
+        <label class="switch">
+          <span class="sr-only">Escaneamento automático</span>
+          <input type="checkbox" id="autoScanEnabled" />
+          <span class="track"></span>
+          <span class="thumb"></span>
+        </label>
+      </div>
+
+      <div class="setting">
+        <div class="setting-info">
+          <p class="setting-title">Bloquear anúncios e rastreadores</p>
+          <p class="setting-hint">
+            Bloqueia redes de anúncio e rastreamento conhecidas (Google Ads, Taboola,
+            Outbrain, etc). Recarregue as páginas abertas depois de mudar essa opção.
+          </p>
+        </div>
+        <label class="switch">
+          <span class="sr-only">Bloquear anúncios e rastreadores</span>
+          <input type="checkbox" id="adBlockEnabled" />
+          <span class="track"></span>
+          <span class="thumb"></span>
+        </label>
+      </div>
+    </div>
+
+    <p class="footer">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+      </svg>
+      ScanShield — IA treinada contra golpes brasileiros
+    </p>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
