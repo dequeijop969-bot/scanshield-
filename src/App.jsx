@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Analytics } from "@vercel/analytics/react";
 import { AuthProvider, useAuth } from "@/lib/AuthContext";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import Layout from "./Layout";
@@ -55,6 +56,7 @@ export default function App() {
         <AuthProvider>
           <Router>
             <AppRoutes />
+            <Analytics />
           </Router>
         </AuthProvider>
       </ThemeProvider>
